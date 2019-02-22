@@ -25,26 +25,22 @@
                       (partial move-left)
                       (partial reverse)))
 
-(defn move-grid-right
+(def move-grid-right
   "Moves an entire grid to the right"
-  [grid]
-  (map move-right grid))
+  (partial map move-right))
 
-(defn move-grid-left
+(def move-grid-left
   "Moves an entire grid to the left"
-  [grid]
-  (map move-left grid))
+  (partial map move-left))
 
-(defn move-grid-down
+(def move-grid-down
   "Moves an entire grid down"
-  [grid]
-  ((comp (partial transpose-grid)
+  (comp (partial transpose-grid)
          (partial move-grid-right)
-         (partial transpose-grid)) grid ))
+         (partial transpose-grid)))
 
-(defn move-grid-up
+(def move-grid-up
   "Moves an entire grid up"
-  [grid]
-  ((comp (partial transpose-grid)
+  (comp (partial transpose-grid)
          (partial move-grid-left)
-         (partial transpose-grid)) grid))
+         (partial transpose-grid)))
